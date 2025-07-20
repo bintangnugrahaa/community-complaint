@@ -29,4 +29,9 @@ class Report extends Model
     {
         return $this->belongsTo(ReportCategory::class);
     }
+
+    public function statuses()
+    {
+        return $this->hasMany(ReportStatus::class);
+    }
 }
