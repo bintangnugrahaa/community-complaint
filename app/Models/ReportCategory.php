@@ -10,4 +10,9 @@ class ReportCategory extends Model
         'name',
         'image',
     ];
+
+    public function reports()
+    {
+        return $this->hasMany(Report::class);
+    }
 }
