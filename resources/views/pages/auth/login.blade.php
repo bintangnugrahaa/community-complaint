@@ -1,5 +1,9 @@
 @extends('layouts.auth')
 
+@section('title')
+    Lapor Pak
+@endsection
+
 @section('content')
     <h5 class="fw-bold mt-5">Selamat datang di Lapor Pak 👋</h5>
     <p class="text-muted mt-2">Silahkan masuk untuk melanjutkan</p>
