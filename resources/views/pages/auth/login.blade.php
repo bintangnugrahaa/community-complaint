@@ -19,15 +19,30 @@
         <hr class="flex-grow-1">
     </div>
 
-    <form action="" method="POST" class="mt-4">
+    <form action="{{ route('auth.login.store') }}" method="POST" class="mt-4">
+        @csrf
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email">
+            <input type="email" class="form-control" @error('email') is-invalid @enderror id="email" name="email"
+                value="{{ old('email') }}" autocomplete="email">
+
+            @error('email')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
 
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" name="password">
+            <input type="password" class="form-control" @error('password') @enderror id="password" name="password"
+                value="{{ old('password') }}" autocomplete="current-password">
+
+            @error('password')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
 
         <button class="btn btn-primary w-100 mt-2" type="submit" color="primary" id="btn-login">
