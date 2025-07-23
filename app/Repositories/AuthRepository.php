@@ -11,4 +11,9 @@ class AuthRepository implements AuthRepositoryInterface
     {
         return Auth::attempt($credentials);
     }
+
+    public function logout()
+    {
+        return Auth::logout();
+    }
 }
