@@ -15,6 +15,11 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Interfaces\AuthRepositoryInterface::class,
             \App\Repositories\AuthRepository::class
         );
+
+        $this->app->bind(
+            \App\Interfaces\ResidentRepositoryInterface::class,
+            \App\Repositories\ResidentRepository::class
+        );
     }
 
     /**
