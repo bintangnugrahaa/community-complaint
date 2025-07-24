@@ -36,7 +36,8 @@
                                         class="btn btn-warning">Edit</a>
                                     <a href="{{ route('admin.resident.show', $resident->id) }}"
                                         class="btn btn-info">Show</a>
-                                    <form action="" method="POST" class="d-inline">
+                                    <form action="{{ route('admin.resident.destroy', $resident->id) }}" method="POST"
+                                        class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger"
