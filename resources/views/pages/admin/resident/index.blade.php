@@ -34,7 +34,8 @@
                                 <td>
                                     <a href="{{ route('admin.resident.edit', $resident->id) }}"
                                         class="btn btn-warning">Edit</a>
-                                    <a href="" class="btn btn-info">Show</a>
+                                    <a href="{{ route('admin.resident.show', $resident->id) }}"
+                                        class="btn btn-info">Show</a>
                                     <form action="" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
