@@ -3,7 +3,7 @@
 @section('title', 'Data Masyarakat')
 
 @section('content')
-    <a href="create.html" class="btn btn-primary mb-3">Tambah Data</a>
+    <a href="{{ route('admin.resident.create') }}" class="btn btn-primary mb-3">Tambah Data</a>
 
 
     <div class="card shadow mb-4">
@@ -26,16 +26,15 @@
                         @foreach ($residents as $resident)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $resident->user->email }}</td>
-                                <td>{{ $resident->user->name }}</td>
                                 <td>
                                     <img src="{{ asset('storage/' . $resident->avatar) }}" alt="avatar" width="100">
                                 </td>
+                                <td>{{ $resident->user->email }}</td>
+                                <td>{{ $resident->user->name }}</td>
                                 <td>
-                                    <a href="{{ route('resident.edit', $resident->id) }}" class="btn btn-warning">Edit</a>
-                                    <a href="{{ route('resident.show', $resident->id) }}" class="btn btn-info">Show</a>
-                                    <form action="{{ route('resident.destroy', $resident->id) }}" method="POST"
-                                        class="d-inline">
+                                    <a href="" class="btn btn-warning">Edit</a>
+                                    <a href="" class="btn btn-info">Show</a>
+                                    <form action="" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger"
