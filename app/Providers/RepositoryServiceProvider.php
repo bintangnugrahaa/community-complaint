@@ -2,6 +2,12 @@
 
 namespace App\Providers;
 
+use App\Interfaces\AuthRepositoryInterface;
+use App\Interfaces\ReportCategoryRepositoryInterface;
+use App\Interfaces\ResidentRepositoryInterface;
+use App\Repositories\AuthRepository;
+use App\Repositories\ReportCategoryRepository;
+use App\Repositories\ResidentRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -11,15 +17,9 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind(
-            \App\Interfaces\AuthRepositoryInterface::class,
-            \App\Repositories\AuthRepository::class
-        );
-
-        $this->app->bind(
-            \App\Interfaces\ResidentRepositoryInterface::class,
-            \App\Repositories\ResidentRepository::class
-        );
+        $this->app->bind(AuthRepositoryInterface::class, AuthRepository::class);
+        $this->app->bind(ResidentRepositoryInterface::class, ResidentRepository::class);
+        $this->app->bind(ReportCategoryRepositoryInterface::class, ReportCategoryRepository::class);
     }
 
     /**
