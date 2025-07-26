@@ -57,7 +57,9 @@ class ReportCategoryController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $category = $this->reportCategoryRepository->getReportCategoryById($id);
+
+        return view('pages.admin.category.show', compact('category'));
     }
 
     /**

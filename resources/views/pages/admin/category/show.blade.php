@@ -1,10 +1,10 @@
 @extends('layouts.admin')
 
-@section('title', 'Show Data Masyarakat')
+@section('title', 'Show Data Kategori')
 
 @section('content')
     <!-- Page Heading -->
-    <a href="{{ route('admin.resident.index') }}" class="btn btn-danger mb-3">Kembali</a>
+    <a href="{{ route('admin.report-category.index') }}" class="btn btn-danger mb-3">Kembali</a>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -14,18 +14,14 @@
         <div class="card-body">
             <table class="table table-bordered">
                 <tr>
-                    <td>Foto Profil</td>
+                    <td>Icon</td>
                     <td>
-                        <img src="{{ asset('storage/' . $resident->avatar) }}" alt="avatar" width="100">
+                        <img src="{{ asset('storage/' . $category->image) }}" alt="image" width="100">
                     </td>
                 </tr>
                 <tr>
                     <td>Nama</td>
-                    <td>{{ $resident->user->name }}</td>
-                </tr>
-                <tr>
-                    <td>Email</td>
-                    <td>{{ $resident->user->email }}</td>
+                    <td>{{ $category->name }}</td>
                 </tr>
             </table>
         </div>
