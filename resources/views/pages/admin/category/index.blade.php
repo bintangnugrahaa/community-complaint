@@ -16,8 +16,8 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama</th>
                             <th>Icon</th>
+                            <th>Nama</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -26,7 +26,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>
-                                    <img src="{{ asset('storage/' . $category->image) }}" alt="image" width="100">
+                                    <img src="{{ asset('storage/' . $category->image) }}" alt="image" width="50">
                                 </td>
                                 <td>{{ $category->name }}</td>
                                 <td>
