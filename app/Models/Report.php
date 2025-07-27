@@ -28,7 +28,7 @@ class Report extends Model
     }
 
 
-    public function category()
+    public function reportCategory()
     {
         return $this->belongsTo(ReportCategory::class);
     }

@@ -14,15 +14,6 @@
                 @csrf
 
                 <div class="form-group">
-                    <label for="code">Kode Laporan</label>
-                    <input type="text" class="form-control @error('code') is-invalid @enderror" id="code"
-                        name="code" value="{{ $code }}" readonly>
-                    @error('code')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div class="form-group">
                     <label for="resident_id">Nama Pelapor</label>
                     <select class="form-control @error('resident_id') is-invalid @enderror" name="resident_id"
                         id="resident_id">
