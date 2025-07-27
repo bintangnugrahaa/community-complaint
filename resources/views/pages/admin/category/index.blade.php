@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Data Kategori Laporan')
+@section('title', 'Data Kategori')
 
 @section('content')
     <a href="{{ route('admin.report-category.create') }}" class="btn btn-primary mb-3">Tambah Data</a>
@@ -8,7 +8,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Daftar Data Kategori Laporan</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Daftar Data Kategori</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">

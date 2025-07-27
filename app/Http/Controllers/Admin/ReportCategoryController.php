@@ -18,7 +18,6 @@ class ReportCategoryController extends Controller
         $this->reportCategoryRepository = $reportCategoryRepository;
     }
 
-
     /**
      * Display a listing of the resource.
      */
