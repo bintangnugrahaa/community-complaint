@@ -77,7 +77,7 @@
                     <label for="image">Foto</label>
                     @if ($report->image)
                         <div class="mb-3">
-                            <img src="{{ asset('storage/' . $report->image) }}" alt="Foto Laporan" width="100">
+                            <img src="{{ asset('storage/' . $report->image) }}" alt="Foto Laporan" width="500">
                         </div>
                     @endif
                     <input type="file" class="form-control @error('image') is-invalid @enderror" id="image"

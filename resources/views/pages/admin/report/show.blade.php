@@ -35,7 +35,7 @@
                     <td>Foto</td>
                     <td>
                         @if ($report->image)
-                            <img src="{{ asset('storage/' . $report->image) }}" alt="image" width="150">
+                            <img src="{{ asset('storage/' . $report->image) }}" alt="image" width="500px">
                         @else
                             <span class="text-muted">Tidak ada gambar</span>
                         @endif
