@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreReportRequest;
 use App\Interfaces\ReportCategoryRepositoryInterface;
 use App\Interfaces\ReportRepositoryInterface;
 use App\Interfaces\ResidentRepositoryInterface;
@@ -44,15 +45,15 @@ class ReportController extends Controller
         $residents = $this->residentRepository->getAllResidents();
         $categories = $this->reportCategoryRepository->getAllReportCategories();
 
-        $nextCode = 'LP' . Str::upper(Str::random(6));
+        $code = 'LP' . Str::upper(Str::random(6));
 
-        return view('pages.admin.report.create', compact('residents', 'categories', 'nextCode'));
+        return view('pages.admin.report.create', compact('residents', 'categories', 'code'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreReportRequest $request)
     {
         //
     }

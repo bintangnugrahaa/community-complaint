@@ -16,7 +16,7 @@
                 <div class="form-group">
                     <label for="code">Kode Laporan</label>
                     <input type="text" class="form-control @error('code') is-invalid @enderror" id="code"
-                        name="code" value="{{ $nextCode }}" readonly>
+                        name="code" value="{{ $code }}" readonly>
                     @error('code')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
