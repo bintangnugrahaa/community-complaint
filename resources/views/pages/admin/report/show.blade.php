@@ -68,7 +68,7 @@
             <h6 class="m-0 font-weight-bold text-primary">Status Laporan</h6>
         </div>
         <div class="card-body">
-            <a href="{{ route('admin.report-status.create') }}" class="btn btn-primary mb-3">Tambah Data</a>
+            <a href="{{ route('admin.report-status.create', $report->id) }}" class="btn btn-primary mb-3">Tambah Data</a>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
@@ -85,7 +85,15 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>
-                                    <img src="{{ asset('storage/' . $status->image) }}" alt="image" width="100">
+                                    @if ($status->image)
+                                        <img src="{{ asset('storage/' . $status->image) }}" alt="image" width="100">
+                                    @endif
+                                </td>
+                                <td>
+                                    {{ $status->status }}
+                                </td>
+                                <td>
+                                    {{ $status->description }}
                                 </td>
                                 <td>
                                     <a href="{{ route('admin.report-status.edit', $status->id) }}"

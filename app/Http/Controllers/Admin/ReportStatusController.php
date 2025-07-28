@@ -3,10 +3,25 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreReportStatusRequest;
+use App\Interfaces\ReportRepositoryInterface;
+use App\Interfaces\ReportStatusRepositoryInterface;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert as Swal;
 
 class ReportStatusController extends Controller
 {
+    private ReportStatusRepositoryInterface $reportStatusRepository;
+    private ReportRepositoryInterface $reportRepository;
+
+    public function __construct(
+        ReportStatusRepositoryInterface $reportStatusRepository,
+        ReportRepositoryInterface $reportRepository,
+    ) {
+        $this->reportStatusRepository = $reportStatusRepository;
+        $this->reportRepository = $reportRepository;
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -18,17 +33,29 @@ class ReportStatusController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($reportId)
     {
-        //
+        $report = $this->reportRepository->getReportById($reportId);
+
+        return view('pages.admin.report-status.create', compact('report'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreReportStatusRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('assets/report-status/image', 'public');
+        }
+
+        $this->reportStatusRepository->createReportStatus($data);
+
+        Swal::toast('Data Status Laporan Berhasil Ditambahkan', 'success')->timerProgressBar();
+
+        return redirect()->route('admin.report.show', $request->report_id);
     }
 
     /**
