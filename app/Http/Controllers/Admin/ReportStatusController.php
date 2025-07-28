@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreReportStatusRequest;
+use App\Http\Requests\UpdateReportStatusRequest;
 use App\Interfaces\ReportRepositoryInterface;
 use App\Interfaces\ReportStatusRepositoryInterface;
 use Illuminate\Http\Request;
@@ -61,25 +62,34 @@ class ReportStatusController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
+    public function show(string $id) {}
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        //
+        $status = $this->reportStatusRepository->getReportStatusById($id);
+
+        return view('pages.admin.report-status.edit', compact('status'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateReportStatusRequest $request, string $id)
     {
-        //
+        $data = $request->validated();
+
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('assets/report-status/image', 'public');
+        }
+
+        $this->reportStatusRepository->updateReportStatus($data, $id);
+
+        toast('Data Status Laporan Berhasil Diupdate', 'success')->timerProgressBar();
+
+        return redirect()->route('admin.report.show', $request->report_id);
     }
 
     /**

@@ -86,7 +86,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>
                                     @if ($status->image)
-                                        <img src="{{ asset('storage/' . $status->image) }}" alt="image" width="100">
+                                        <img src="{{ asset('storage/' . $status->image) }}" alt="image" width="500">
                                     @endif
                                 </td>
                                 <td>
@@ -98,8 +98,6 @@
                                 <td>
                                     <a href="{{ route('admin.report-status.edit', $status->id) }}"
                                         class="btn btn-warning">Edit</a>
-                                    <a href="{{ route('admin.report-status.show', $status->id) }}"
-                                        class="btn btn-info">Show</a>
                                     <form action="{{ route('admin.report-status.destroy', $status->id) }}" method="POST"
                                         class="d-inline">
                                         @csrf
