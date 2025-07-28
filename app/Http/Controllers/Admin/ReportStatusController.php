@@ -62,7 +62,10 @@ class ReportStatusController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id) {}
+    public function show(string $id)
+    {
+        //
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -97,6 +100,12 @@ class ReportStatusController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $status = $this->reportStatusRepository->getReportStatusById($id);
+
+        $this->reportStatusRepository->deleteReportStatus($id);
+
+        Swal::toast('Data Status Laporan Berhasil Dihapus', 'success')->timerProgressBar();
+
+        return redirect()->route('admin.report.show', $status->report_id);
     }
 }
