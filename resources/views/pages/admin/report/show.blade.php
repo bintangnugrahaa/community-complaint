@@ -62,6 +62,51 @@
             </table>
         </div>
     </div>
+
+    <div class="card shadow mb-5">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Status Laporan</h6>
+        </div>
+        <div class="card-body">
+            <a href="{{ route('admin.report-status.create') }}" class="btn btn-primary mb-3">Tambah Data</a>
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Butki</th>
+                            <th>Status</th>
+                            <th>Deskripsi</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($report->reportStatuses as $status)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>
+                                    <img src="{{ asset('storage/' . $status->image) }}" alt="image" width="100">
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.report-status.edit', $status->id) }}"
+                                        class="btn btn-warning">Edit</a>
+                                    <a href="{{ route('admin.report-status.show', $status->id) }}"
+                                        class="btn btn-info">Show</a>
+                                    <form action="{{ route('admin.report-status.destroy', $status->id) }}" method="POST"
+                                        class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('scripts')
