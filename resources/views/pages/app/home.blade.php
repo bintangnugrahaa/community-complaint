@@ -28,7 +28,7 @@
         <div class="d-flex flex-column gap-3 mt-3">
             @foreach ($reports as $report)
                 <div class="card card-report border-0 shadow-none">
-                    <a href="details.html" class="text-decoration-none text-dark">
+                    <a href="{{ route('report.show', $report->code) }}" class="text-decoration-none text-dark">
                         <div class="card-body p-0">
                             <div class="card-report-image position-relative mb-2">
                                 <img src="{{ asset('storage/' . $report->image) }}" alt="">
@@ -38,7 +38,7 @@
                                 @endphp
 
                                 @if ($latestStatus === 'delivered')
-                                    <div class="badge-status on-process">
+                                    <div class="badge-status delivered">
                                         Terkirim
                                     </div>
                                 @elseif ($latestStatus === 'in_process')
