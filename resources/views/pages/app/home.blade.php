@@ -8,7 +8,7 @@
 
     <div class="d-flex align-items-center gap-4 py-3 overflow-auto" id="category" style="white-space: nowrap;">
         @foreach ($categories as $category)
-            <a href="reports.html" class="category d-inline-block">
+            <a href="{{ route('report.index', ['category' => $category->name]) }}" class="category d-inline-block">
                 <div class="icon">
                     <img src="{{ asset('storage/' . $category->image) }}" alt="icon">
                 </div>

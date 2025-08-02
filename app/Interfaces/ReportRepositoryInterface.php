@@ -7,6 +7,7 @@ interface ReportRepositoryInterface
     public function getAllReports();
     public function getLatestReports();
     public function getReportByCode(string $code);
+    public function getReportByCategory(string $category);
     public function getReportById(int $id);
     public function createReport(array $data);
     public function updateReport(array $data, int $id);

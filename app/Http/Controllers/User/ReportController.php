@@ -15,11 +15,16 @@ class ReportController extends Controller
         $this->reportRepository = $reportRepository;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $reports = $this->reportRepository->getAllReports();
+        $category = $request->query('category');
+        if ($category) {
+            $reports = $this->reportRepository->getReportByCategory($category);
+        } else {
+            $reports = $this->reportRepository->getAllReports();
+        }
 
-        return view("pages.app.report.index", compact("reports"));
+        return view("pages.app.report.index", compact("reports", "category"));
     }
 
     public function show($code)

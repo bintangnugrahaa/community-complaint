@@ -3,7 +3,15 @@
 @section('title', 'Daftar Laporan')
 
 @section('content')
-    <div class="py-3" id="reports">
+    <div class="header-nav">
+        <a href="{{ route('home') }}">
+            <img src="{{ asset('assets/app/images/icons/ArrowLeft.svg') }}" alt="arrow-left">
+        </a>
+
+        <h1>List Pengaduan @if($category) - {{ $category }} @endif</h1>
+    </div>
+
+    <div class="py-5" id="reports">
         <div class="d-flex justify-content-between align-items-center">
             <p class="text-muted">{{ $reports->count() }} List Pengaduan</p>
 
