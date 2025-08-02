@@ -1,28 +1,17 @@
 @extends('layouts.app')
 
-@section('title', 'Home')
+@section('title', 'Daftar Laporan')
 
 @section('content')
-    <h6 class="greeting">Hi, User 👋</h6>
-    <h4 class="home-headline">Laporkan masalahmu dan kami segera atasi itu</h4>
-
-    <div class="d-flex align-items-center gap-4 py-3 overflow-auto" id="category" style="white-space: nowrap;">
-        @foreach ($categories as $category)
-            <a href="reports.html" class="category d-inline-block">
-                <div class="icon">
-                    <img src="{{ asset('storage/' . $category->image) }}" alt="icon">
-                </div>
-                <p>{{ $category->name }}</p>
-            </a>
-        @endforeach
-    </div>
-
     <div class="py-3" id="reports">
         <div class="d-flex justify-content-between align-items-center">
-            <h6>Pengaduan terbaru</h6>
-            <a href="{{ route('report.index') }}" class="text-primary text-decoration-none show-more">
-                Lihat semua
-            </a>
+            <p class="text-muted">{{ $reports->count() }} List Pengaduan</p>
+
+            <button class="btn btn-filter" type="button">
+                <i class="fa-solid fa-filter me-2"></i>
+                Filter
+            </button>
+
         </div>
 
         <div class="d-flex flex-column gap-3 mt-3">
