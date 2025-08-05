@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreReportRequest;
 use App\Interfaces\ReportCategoryRepositoryInterface;
 use App\Interfaces\ReportRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class ReportController extends Controller
 {
@@ -51,5 +54,23 @@ class ReportController extends Controller
         $categories = $this->reportCategoryRepository->getAllReportCategories();
 
         return view('pages.app.report.create', compact('categories'));
+    }
+
+    public function store(StoreReportRequest $request)
+    {
+        $data = $request->validated();
+
+        $data['code'] = 'LP' . Str::upper(Str::random(6));
+        $data['resident_id'] = Auth::user()->resident->id;
+        $data['image'] = $request->file('image')->store('assets/report/image', 'public');
+
+        $this->reportRepository->createReport($data);
+
+        return redirect()->route('report.success');
+    }
+
+    public function success()
+    {
+        return view('pages.app.report.success');
     }
 }

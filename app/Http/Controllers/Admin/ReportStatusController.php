@@ -86,7 +86,7 @@ class ReportStatusController extends Controller
 
         if ($request->hasFile('image')) {
             $data['image'] = $request->file('image')->store('assets/report-status/image', 'public');
-        }
+        };
 
         $this->reportStatusRepository->updateReportStatus($data, $id);
 

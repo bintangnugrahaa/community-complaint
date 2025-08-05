@@ -57,12 +57,18 @@
                                     <img src="{{ asset('assets/app/images/icons/MapPin.png') }}" alt="map pin"
                                         class="icon me-2">
                                     <p class="text-primary city">
-                                        {{ $report->address }}
-                                    </p>
+                                        {{ \Illuminate\Support\Str::limit($report->address, 20) }} </p>
                                 </div>
 
                                 <p class="text-secondary date">
-                                    {{ $report->created_at->format('d M Y') }}
+                                    @php
+                                        $days = $report->created_at->diffInDays(now());
+                                    @endphp
+                                    @if ($days > 3)
+                                        {{ $report->created_at->format('d M Y') }}
+                                    @else
+                                        {{ $report->created_at->diffForHumans() }}
+                                    @endif
                                 </p>
                             </div>
 

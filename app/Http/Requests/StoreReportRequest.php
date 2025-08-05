@@ -14,11 +14,13 @@ class StoreReportRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'resident_id' => 'required|exists:residents,id',
+            'resident_id' => auth()->user()->hasRole('resident')
+                ? 'nullable|exists:residents,id'
+                : 'required|exists:residents,id',
             'report_category_id' => 'required|exists:report_categories,id',
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'image' => 'required|file',
+            'image' => 'required',
             'latitude' => 'required|string',
             'longitude' => 'required|string',
             'address' => 'required|string',

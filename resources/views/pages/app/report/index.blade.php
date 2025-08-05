@@ -8,7 +8,10 @@
             <img src="{{ asset('assets/app/images/icons/ArrowLeft.svg') }}" alt="arrow-left">
         </a>
 
-        <h1>List Pengaduan @if($category) - {{ $category }} @endif</h1>
+        <h1>List Pengaduan @if ($category)
+                - {{ $category }}
+            @endif
+        </h1>
     </div>
 
     <div class="py-5" id="reports">
@@ -54,12 +57,19 @@
                                     <img src="{{ asset('assets/app/images/icons/MapPin.png') }}" alt="map pin"
                                         class="icon me-2">
                                     <p class="text-primary city">
-                                        {{ $report->address }}
+                                        {{ \Illuminate\Support\Str::limit($report->address, 20) }}
                                     </p>
                                 </div>
 
                                 <p class="text-secondary date">
-                                    {{ $report->created_at->format('d M Y') }}
+                                    @php
+                                        $days = $report->created_at->diffInDays(now());
+                                    @endphp
+                                    @if ($days > 3)
+                                        {{ $report->created_at->format('d M Y') }}
+                                    @else
+                                        {{ $report->created_at->diffForHumans() }}
+                                    @endif
                                 </p>
                             </div>
 
