@@ -35,6 +35,6 @@ class Report extends Model
 
     public function reportStatuses()
     {
-        return $this->hasMany(ReportStatus::class);
+        return $this->hasMany(ReportStatus::class)->orderBy('id');
     }
 }
